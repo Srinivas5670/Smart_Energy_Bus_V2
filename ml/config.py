@@ -92,7 +92,7 @@ WIND_SPEED_VALUES = {
 # RANDOM FOREST
 # =====================================================
 
-RF_ESTIMATORS = 200
+RF_ESTIMATORS = 77
 
 # =====================================================
 # GRADIENT BOOSTING

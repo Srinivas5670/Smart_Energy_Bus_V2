@@ -51,8 +51,11 @@ def build_models(preprocessor):
                 RandomForestRegressor(
 
                     n_estimators=RF_ESTIMATORS,
+                    max_depth=14,
 
-                    random_state=RANDOM_STATE
+                    random_state=RANDOM_STATE,
+                    n_jobs=-1
+
 
                 )
 
