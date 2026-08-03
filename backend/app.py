@@ -1,6 +1,7 @@
 from flask import Flask, jsonify
 
 from config import Config
+from database.init_db import initialize_database
 from routes.prediction import prediction_bp
 from routes.history import history_bp
 from routes.auth import auth_bp
@@ -17,6 +18,8 @@ app = Flask(__name__)
 CORS(app)
 
 app.config.from_object(Config)
+
+initialize_database()
 
 app.register_blueprint(prediction_bp)
 app.register_blueprint(history_bp)
