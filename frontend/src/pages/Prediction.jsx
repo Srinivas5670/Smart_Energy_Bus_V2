@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Layout from "../components/Layout";
 import RouteMap from "../components/RouteMap";
 import api from "../services/api";
@@ -40,6 +40,60 @@ function Prediction() {
     // Selected route for RouteMap
 
     const [selectedRoute, setSelectedRoute] = useState(null);
+
+    useEffect(() => {
+
+    const saved = sessionStorage.getItem("predictionPage");
+
+    if (saved) {
+
+        const data = JSON.parse(saved);
+
+        setFormData(data.formData);
+
+        setPrediction(data.prediction);
+
+        setRouteInfo(data.routeInfo);
+
+        setSelectedRoute(data.selectedRoute);
+
+    }
+
+}, []);
+
+useEffect(() => {
+
+    if (!prediction && !routeInfo) return;
+
+    sessionStorage.setItem(
+
+        "predictionPage",
+
+        JSON.stringify({
+
+            formData,
+
+            prediction,
+
+            routeInfo,
+
+            selectedRoute
+
+        })
+
+    );
+
+}, [
+
+    formData,
+
+    prediction,
+
+    routeInfo,
+
+    selectedRoute
+
+]);
 
     const searchSource = async (value) => {
 
@@ -537,6 +591,25 @@ function Prediction() {
                 >
                     Predict Energy Consumption
                 </button>
+                <button
+
+    type="button"
+
+    onClick={() => {
+
+        sessionStorage.removeItem("predictionPage");
+
+        window.location.reload();
+
+    }}
+
+    className="mt-4 w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-lg"
+
+>
+
+    Clear Prediction
+
+</button>
 
             </form>
                         {routeInfo && (
