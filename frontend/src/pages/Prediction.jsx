@@ -163,19 +163,54 @@ useEffect(() => {
 
     };
 
-    const handleChange = (e) => {
+const handleChange = (e) => {
 
-        const { name, value } = e.target;
+    const { name, value } = e.target;
 
-        setFormData({
+    let newValue = value;
 
-            ...formData,
+    // Speed: 10 - 130
+    if (name === "Speed_kmh") {
 
-            [name]: value
+        if (value !== "") {
 
-        });
+            newValue = Math.max(10, Math.min(130, Number(value)));
 
-    };
+        }
+
+    }
+
+    // Passenger Count: 1 - 60
+    if (name === "Passenger_Count") {
+
+        if (value !== "") {
+
+            newValue = Math.max(1, Math.min(60, Number(value)));
+
+        }
+
+    }
+
+    // Battery State: 1 - 100
+    if (name === "Battery_State_%") {
+
+        if (value !== "") {
+
+            newValue = Math.max(1, Math.min(100, Number(value)));
+
+        }
+
+    }
+
+    setFormData({
+
+        ...formData,
+
+        [name]: newValue
+
+    });
+
+};
 
     const handleSubmit = async (e) => {
 
@@ -403,12 +438,15 @@ useEffect(() => {
                         </label>
 
                         <input
-                            type="number"
+                            type="number" 
                             name="Speed_kmh"
                             value={formData.Speed_kmh}
                             onChange={handleChange}
                             className="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                             required
+                            min="10"
+                            max="130"
+
                         />
 
                     </div>
@@ -421,6 +459,8 @@ useEffect(() => {
 
                         <input
                             type="number"
+                            min="1"
+                            max="60"
                             name="Passenger_Count"
                             value={formData.Passenger_Count}
                             onChange={handleChange}
@@ -438,6 +478,8 @@ useEffect(() => {
 
                         <input
                             type="number"
+                            min="1"
+                            max="100"
                             name="Battery_State_%"
                             value={formData["Battery_State_%"]}
                             onChange={handleChange}
