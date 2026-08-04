@@ -61,6 +61,23 @@ def login():
         """, (email,))
 
         user = cursor.fetchone()
+
+        print("================================")
+        print("USER FOUND:", user)
+
+        if user:
+
+            print("Stored Password Hash:")
+            print(user["password"])
+
+            print("Entered Password:")
+            print(password)
+
+            print("Password Match:")
+            print(check_password_hash(user["password"], password))
+
+        print("================================")
+
         conn.close()
 
         if user is None:
