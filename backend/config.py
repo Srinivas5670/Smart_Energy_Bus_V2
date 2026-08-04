@@ -20,7 +20,11 @@ class Config:
     # =====================================================
     # Database
     # =====================================================
-
+    print("DATABASE PATH =", os.path.abspath(os.path.join(
+        BASE_DIR,
+        "database",
+        "energy_bus.db"
+    )))
     DATABASE = os.path.join(
         BASE_DIR,
         "database",
