@@ -315,7 +315,17 @@ function Route() {
 
                             sessionStorage.removeItem("routePage");
 
-                            window.location.reload();
+                           setSource("");
+
+        setDestination("");
+
+        setSourceStops([]);
+
+        setDestinationStops([]);
+
+        setRoute(null);
+
+        setSelectedRoute(null);
 
                         }}
                         className="bg-red-600 hover:bg-red-700 transition text-white px-6 py-3 rounded-lg font-semibold"
