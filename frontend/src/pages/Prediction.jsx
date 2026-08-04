@@ -599,7 +599,38 @@ useEffect(() => {
 
         sessionStorage.removeItem("predictionPage");
 
-        window.location.reload();
+             setFormData({
+
+        source: "",
+
+        destination: "",
+
+        Speed_kmh: "",
+
+        Passenger_Count: "",
+
+        "Battery_State_%": "",
+
+        Weather_Condition: "",
+
+        Traffic_Condition: "",
+
+        Road_Type: "",
+
+        Road_Gradient: ""
+
+    });
+
+    setPrediction(null);
+
+    setRouteInfo(null);
+
+    setSourceStops([]);
+
+    setDestinationStops([]);
+
+    setSelectedRoute(null);
+
 
     }}
 
