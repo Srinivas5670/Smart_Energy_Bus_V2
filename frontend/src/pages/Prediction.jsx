@@ -169,12 +169,12 @@ const handleChange = (e) => {
 
     let newValue = value;
 
-    // Speed: 10 - 130
+    // Speed: 1 - 130
     if (name === "Speed_kmh") {
 
         if (value !== "") {
 
-            newValue = Math.max(10, Math.min(130, Number(value)));
+            newValue = Math.max(1, Math.min(130, Number(value)));
 
         }
 
@@ -439,12 +439,13 @@ const handleChange = (e) => {
 
                         <input
                             type="number" 
+                            min="1"
+                            max="130"
                             name="Speed_kmh"
                             value={formData.Speed_kmh}
                             onChange={handleChange}
                             className="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                             required
-                            max="130"
 
                         />
 
