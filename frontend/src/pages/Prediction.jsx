@@ -444,7 +444,7 @@ const handleChange = (e) => {
                             onChange={handleChange}
                             className="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                             required
-                            min="1"
+                            min="2"
                             max="130"
 
                         />
